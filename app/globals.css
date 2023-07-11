@@ -16,7 +16,7 @@
   }
 }
 
-body {
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,4 +24,42 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+} */
+
+#first_image{
+  position:relative;
+}
+
+#first_image_div{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color: black;
+  opacity: 0.6;
+}
+
+#bgig{
+  background-image: url('../public/diamond.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: drop-shadow(4px 4px 10px blue);
+}
+
+#bgig2{
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+#nv{
+  background-color: black;
+  opacity: 0.8;
+}
+
+#main{
+  width:100%;
+  top: 0;
+  left: 0;
 }
