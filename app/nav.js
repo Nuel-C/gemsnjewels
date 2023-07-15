@@ -1,10 +1,20 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const Nav = () => {
   const [selectedOption, setSelectedOption] = useState('');
+  const [user, setUser] = useState({user:'none'})
+  const str = sessionStorage.getItem('user');            
+  const parsedObject = JSON.parse(str);
+  
+  useEffect(()=>{
+    if(parsedObject == null){
+      return setUser({user:'none'})
+    }
+    setUser(parsedObject)
+  }, [])
 
   const handleSelect = (event) => {
     setSelectedOption(event.target.value);
@@ -29,8 +39,11 @@ const Nav = () => {
                         <i class="fa-solid fa-xmark fa-sharp text-white text-xl" onClick={close}></i> 
                     </div>
                     <Link href='/' onClick={close}>Home</Link>
-                    <Link href='/products' onClick={close}>All Products</Link>
+                    <Link href='/products' className={user.user === 'Admin' ? 'hidden' : 'block'} onClick={close}>All Products</Link>
+                    <Link href='/adminProducts' className={user.user === 'Admin' ? 'block' : 'hidden'} onClick={close}>All Products</Link>
                     <Link href='/' onClick={close}>My Orders</Link>
+                    <Link href='/' onClick={close} className={user.user === 'Admin' ? 'block' : 'hidden'}>Orders</Link>
+                    <Link href='/newProduct' onClick={close} className={user.user === 'Admin' ? 'block' : 'hidden'}>New Product</Link>
                 </div>
                 <div id='nv' className='md:w-full w-1/2 h-full'>           
                 </div>

@@ -1,3 +1,4 @@
+'use client'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
@@ -6,6 +7,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Head from 'next/head';
 import Nav from './nav'
+import React, { useState, useEffect } from 'react';
+
 
 
 
@@ -24,10 +27,26 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  const str = sessionStorage.getItem('user');            
+  const parsedObject = JSON.parse(str);
+  const [user, setUser] = useState({user:'none'})
+
+
+  useEffect(()=>{
+    if(parsedObject == null){
+      return setUser({user:'none'})
+    }
+    setUser(parsedObject)
+  }, [])
   return (
     <html lang="en">
       <Head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
         <link
           rel="icon"
           href="/favicon.ico"
@@ -48,7 +67,8 @@ export default function RootLayout({ children }) {
               <h1 className={pacifico.className}>Welcome To Gems N Jewels</h1>
               <i className="fa-sharp fa-regular fa-gem pt-1"></i>  
           </div>
-          <div className='text-sm font-bold'><Link href='/login'>Login</Link> / <Link href='/signup'>Signup</Link></div>
+          <div className={user.user == 'none'?'text-sm font-bold':'hidden'}><Link href='/login'>Login</Link> / <Link href='/signup'>Signup</Link></div>
+          <div className={user.user == 'none' ? 'hidden': 'block'}><i class="fa-solid fa-cart-shopping text-white"></i></div>
         </div>
 
         <div className="flex flex-row justify-between m-2 px-5">
@@ -61,11 +81,11 @@ export default function RootLayout({ children }) {
                 width={100}
                 height={100}
                 alt="Picture of the author"
-                className='md:ml-2 w-44'
+                className='lg:ml-9 w-44'
             />
           </div>
           <div className='w-1/5'></div>
-        </div>
+        </div><hr/>
 
         {children}
 
@@ -115,6 +135,9 @@ export default function RootLayout({ children }) {
         </div>
       </body>
       <Script src="https://kit.fontawesome.com/77cfc6d17b.js" crossorigin="anonymous"/>
+      <Script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"/>
+      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"/>
+      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"/>
     </html>
   )
 }
