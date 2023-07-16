@@ -1,16 +1,18 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import axios from 'axios';
 
-const Dropdown = () => {
-  const [selectedOption, setSelectedOption] = useState('');
+const Dropdown = ({setCategory, value}) => {
+  const option = useRef()
 
-  const handleSelect = (event) => {
-    setSelectedOption(event.target.value);
+
+  const handleSelect = async () => {
+    setCategory(option.current.value)
   };
 
   return (
-    <select value={selectedOption} onChange={handleSelect}>
+    <select value={value} onChange={handleSelect} className='rounded-md bg-black text-white p-3 m-2' ref={option}>
       <option value="All">All Products</option>
       <option value="Bracelets">Bracelets</option>
       <option value="Necklaces">Necklaces</option>

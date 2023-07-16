@@ -1,14 +1,70 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import animationData from '../public/loading.json';
+import { useState, useEffect, useRef } from "react";
+import axios from 'axios'
+import Lottie from 'react-lottie';
+import ProductComponent from './product';
 
 
 
 export default function Home() {
-    const addToCart = (price)=>{
 
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        rendererSettings: {
+          preserveAspectRatio: "xMidYMid slice"
+        }
+    };
+    const [data, setData] = useState();
+
+    const collection = useRef()
+
+
+
+    useEffect(() => {
+        axios
+          .get("/getAllUploads")
+          .then((res) => {
+            const ff = res.data;
+            if(ff.length > 8){
+                var x=[]
+                for(var i = 0; i < ff.length; i++){
+                    x.push[ff[i]]
+                }
+                return setData(x)
+            }
+            setData(ff);
+          })
+          .catch((e) => {
+            console.log(e.message);
+          });
+      }, []);
+
+      
+      if (data == undefined) {
+        return (
+            <main className="h-full flex flex-col justify-center align-center">
+            <Lottie 
+                options={defaultOptions}
+                height={500}
+                width={400}
+                className='w-full h-full'
+            />
+            </main>
+        );
     }
 
+    if (data.length === 0) {
+        return <main className="h-full md:px-12 p-2 mb-32 mt-32">
+            <p className="text-center">No products are currently available</p>
+        </main>;
+    }
+
+    
 
   return (
     <main className="h-full mt-5">
@@ -59,124 +115,16 @@ export default function Home() {
           <h1 className="text-l">TRENDING ITEMS</h1>
           <Link href='/products'>All Products <i class="fa-solid fa-arrow-right fa-bounce"></i></Link>
         </div><br/><hr/><br/>
+        <br/><br/>
         <div>
             <div className="grid md:grid-cols-4 grid-cols-2 gap-2 md:gap-5">
-                <div className="p-1 md:p-5 rounded-md bg-black text-white">
-                    <div className="p-1">
-                        <Image
-                            src='/jewelry.jpg'
-                            width={400}
-                            height={400}
-                            className="h-44 rounded"
-                        />
-                        <p className="text-xs font-bold text-slate-500 mb-2">persian solace</p><hr/>
-                        <p className="text-sm mb-2 mt-2">Persian abstract</p>
-                        <p><i class="fa-solid fa-naira-sign"></i>9,000.00</p>
-                        <button onClick={()=> addToCart('9')} className='mt-2 bg-white text-black p-2 w-full text-xs'>Add</button>
-                    </div>
-                </div>
-                <div className="p-1 md:p-5 rounded-md bg-black text-white">
-                    <div className="p-1">
-                        <Image
-                            src='/jewelry.jpg'
-                            width={400}
-                            height={400}
-                            className="h-44 rounded"
-                        />
-                        <p className="text-xs font-bold text-slate-500 mb-2">Persian solace</p><hr/>
-                        <p className="text-sm mb-2 mt-2">Persian abstract</p>
-                        <p><i class="fa-solid fa-naira-sign"></i>9,000.00</p>
-                        <button onClick={()=> addToCart('9')} className='mt-2 bg-white text-black p-2 w-full text-xs'>Add</button>
-                    </div>
-                </div>
-                <div className="p-1 md:p-5 rounded-md bg-black text-white">
-                    <div className="p-1">
-                        <Image
-                            src='/jewelry.jpg'
-                            width={400}
-                            height={400}
-                            className="h-44 rounded"
-                        />
-                        <p className="text-xs font-bold text-slate-500 mb-2">persian solace</p><hr/>
-                        <p className="text-sm mb-2 mt-2">Persian abstract</p>
-                        <p><i class="fa-solid fa-naira-sign"></i>9,000.00</p>
-                        <button onClick={()=> addToCart('9')} className='mt-2 bg-white text-black p-2 w-full text-xs'>Add</button>
-                    </div>
-                </div>
-                <div className="p-1 md:p-5 rounded-md bg-black text-white">
-                    <div className="p-1">
-                        <Image
-                            src='/jewelry.jpg'
-                            width={400}
-                            height={400}
-                            className="h-44 rounded"
-                        />
-                        <p className="text-xs font-bold text-slate-500 mb-2">persian solace</p><hr/>
-                        <p className="text-sm mb-2 mt-2">Persian abstract</p>
-                        <p><i class="fa-solid fa-naira-sign"></i>9,000.00</p>
-                        <button onClick={()=> addToCart('9')} className='mt-2 bg-white text-black p-2 w-full text-xs'>Add</button>
-                    </div>
-                </div>
-                <div className="p-1 md:p-5 rounded-md bg-black text-white">
-                    <div className="p-1">
-                        <Image
-                            src='/jewelry.jpg'
-                            width={400}
-                            height={400}
-                            className="h-44 rounded"
-                        />
-                        <p className="text-xs font-bold text-slate-500 mb-2">persian solace</p><hr/>
-                        <p className="text-sm mb-2 mt-2">Persian abstract</p>
-                        <p><i class="fa-solid fa-naira-sign"></i>9,000.00</p>
-                        <button onClick={()=> addToCart('9')} className='mt-2 bg-white text-black p-2 w-full text-xs'>Add</button>
-                    </div>
-                </div>
-                <div className="p-1 md:p-5 rounded-md bg-black text-white">
-                    <div className="p-1">
-                        <Image
-                            src='/jewelry.jpg'
-                            width={400}
-                            height={400}
-                            className="h-44 rounded"
-                        />
-                        <p className="text-xs font-bold text-slate-500 mb-2">persian solace</p><hr/>
-                        <p className="text-sm mb-2 mt-2">Persian abstract</p>
-                        <p><i class="fa-solid fa-naira-sign"></i>9,000.00</p>
-                        <button onClick={()=> addToCart('9')} className='mt-2 bg-white text-black p-2 w-full text-xs'>Add</button>
-                    </div>
-                </div>
-                <div className="p-1 md:p-5 rounded-md bg-black text-white">
-                    <div className="p-1">
-                        <Image
-                            src='/jewelry.jpg'
-                            width={400}
-                            height={400}
-                            className="h-44 rounded"
-                        />
-                        <p className="text-xs font-bold text-slate-500 mb-2">persian solace</p><hr/>
-                        <p className="text-sm mb-2 mt-2">Persian abstract</p>
-                        <p><i class="fa-solid fa-naira-sign"></i>9,000.00</p>
-                        <button onClick={()=> addToCart('9')} className='mt-2 bg-white text-black p-2 w-full text-xs'>Add</button>
-                    </div>
-                </div>
-                <div className="p-1 md:p-5 rounded-md bg-black text-white">
-                    <div className="p-1">
-                        <Image
-                            src='/jewelry.jpg'
-                            width={400}
-                            height={400}
-                            className="h-44 rounded"
-                        />
-                        <p className="text-xs font-bold text-slate-500 mb-2">persian solace</p><hr/>
-                        <p className="text-sm mb-2 mt-2">Persian abstract</p>
-                        <p><i class="fa-solid fa-naira-sign"></i>9,000.00</p>
-                        <button onClick={()=> addToCart('9')} className='mt-2 bg-white text-black p-2 w-full text-xs'>Add</button>
-                    </div>
-                </div>
+            {data.map((x, index) => 
+                <ProductComponent data={x} key={index}/>
+                )
+            }
             </div>
         </div>
       </div>
-
 
 
         <div id="bgig">

@@ -18,6 +18,10 @@ const nextConfig = {
             source: '/getByCategory',
             destination: 'http://localhost:5000/getByCategory',
           },
+          {
+            source: '/deleteProduct',
+            destination: 'http://localhost:5000/deleteProduct',
+          },
         ]
       },
       images: {

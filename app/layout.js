@@ -27,8 +27,11 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
-  const str = sessionStorage.getItem('user');            
-  const parsedObject = JSON.parse(str);
+  let parsedObject 
+  if (typeof window !== 'undefined') {
+    const str = sessionStorage.getItem('user');            
+    parsedObject = JSON.parse(str);
+  }
   const [user, setUser] = useState({user:'none'})
 
 
@@ -42,11 +45,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <Head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-        />
-        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
         <link
           rel="icon"
           href="/favicon.ico"
@@ -95,13 +93,6 @@ export default function RootLayout({ children }) {
                 <div className='flex flex-col justufy-between items-start text-white mb-10 relative lg:left-0 md:left-10'>
                     <p className='font-bold mb-3'>Location</p>
                     <p className='mb-3'>Isale Eko Avenue, Dolphin Estate, Ikoyi, Lagos, <br /> Nigeria</p>
-                    <Image
-                        src="/z_logo.jpeg"
-                        width={80}
-                        height={80}
-                        alt="Picture of the author"
-                        className="mb-3"
-                    />
                     <p>© 2022 Hernalytics</p>
                 </div>
                 <div className='flex flex-col justufy-between items-start text-white mb-10'>
@@ -135,9 +126,6 @@ export default function RootLayout({ children }) {
         </div>
       </body>
       <Script src="https://kit.fontawesome.com/77cfc6d17b.js" crossorigin="anonymous"/>
-      <Script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"/>
-      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"/>
-      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"/>
     </html>
   )
 }

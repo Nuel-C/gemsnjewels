@@ -6,8 +6,11 @@ import Link from 'next/link';
 const Nav = () => {
   const [selectedOption, setSelectedOption] = useState('');
   const [user, setUser] = useState({user:'none'})
-  const str = sessionStorage.getItem('user');            
-  const parsedObject = JSON.parse(str);
+  let parsedObject 
+  if (typeof window !== 'undefined') {
+    const str = sessionStorage.getItem('user');            
+    parsedObject = JSON.parse(str);
+  }
   
   useEffect(()=>{
     if(parsedObject == null){
@@ -41,8 +44,8 @@ const Nav = () => {
                     <Link href='/' onClick={close}>Home</Link>
                     <Link href='/products' className={user.user === 'Admin' ? 'hidden' : 'block'} onClick={close}>All Products</Link>
                     <Link href='/adminProducts' className={user.user === 'Admin' ? 'block' : 'hidden'} onClick={close}>All Products</Link>
-                    <Link href='/' onClick={close}>My Orders</Link>
-                    <Link href='/' onClick={close} className={user.user === 'Admin' ? 'block' : 'hidden'}>Orders</Link>
+                    <Link href='/userOrders' onClick={close} className={user.user === 'Admin' ? 'hidden' : 'block'}>My Orders</Link>
+                    <Link href='/adminOrders' onClick={close} className={user.user === 'Admin' ? 'block' : 'hidden'}>Orders</Link>
                     <Link href='/newProduct' onClick={close} className={user.user === 'Admin' ? 'block' : 'hidden'}>New Product</Link>
                 </div>
                 <div id='nv' className='md:w-full w-1/2 h-full'>           

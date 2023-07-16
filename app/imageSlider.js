@@ -17,8 +17,6 @@ export const Slider = ({item})=> {
             pagination={{ clickable: true }}
             spaceBetween={0}
             slidesPerView={1}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
         >
             {
                 data.map((x, index)=>(

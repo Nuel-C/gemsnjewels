@@ -12,7 +12,6 @@ export default function page() {
         e.preventDefault()
         let Form = new FormData(form.current)
         const data = await axios.post('/adminlogin', Form)
-        console.log(data.data)
         if(data.data.msg == 'error'){
             return alert('Invalid Credentials')
         }
