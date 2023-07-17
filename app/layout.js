@@ -8,6 +8,8 @@ import Link from 'next/link'
 import Head from 'next/head';
 import Nav from './nav'
 import React, { useState, useEffect } from 'react';
+import Cart from './cart'
+import axios from 'axios'
 
 
 
@@ -33,14 +35,31 @@ export default function RootLayout({ children }) {
     parsedObject = JSON.parse(str);
   }
   const [user, setUser] = useState({user:'none'})
+  const [cartItems, setCartItems] = useState(0)
 
 
   useEffect(()=>{
     if(parsedObject == null){
       return setUser({user:'none'})
     }
+    axios
+    .post("/getUserCartItems", {userId: parsedObject._id})
+    .then((res) => {
+      const ff = res.data;
+      if(ff == []){
+        return
+      }
+      if(res.data.success == false){
+        return
+      }
+      setCartItems(ff.length)
+    })
+    .catch((e) => {
+      console.log(e.message);
+    });
     setUser(parsedObject)
   }, [])
+
   return (
     <html lang="en">
       <Head>
@@ -59,14 +78,14 @@ export default function RootLayout({ children }) {
         />     
       </Head>
       <body className={inter.className}>
-        <div className='flex flex-row justify-between md:px-20 w-full bg-black p-2 text-white'>
+        <div className='flex flex-row justify-between md:px-20 w-full bg-gray-200 p-2 text-black'>
           <div className='flex flex-row justify-between'>
               <i className="fa-sharp fa-regular fa-gem pt-1"></i>
               <h1 className={pacifico.className}>Welcome To Gems N Jewels</h1>
               <i className="fa-sharp fa-regular fa-gem pt-1"></i>  
           </div>
           <div className={user.user == 'none'?'text-sm font-bold':'hidden'}><Link href='/login'>Login</Link> / <Link href='/signup'>Signup</Link></div>
-          <div className={user.user == 'none' ? 'hidden': 'block'}><i class="fa-solid fa-cart-shopping text-white"></i></div>
+          <div className={user.user == 'none' || user.user == 'Admin' ? 'hidden': 'block'}><Cart num={cartItems}/></div>
         </div>
 
         <div className="flex flex-row justify-between m-2 px-5">
@@ -88,19 +107,21 @@ export default function RootLayout({ children }) {
         {children}
 
         <div>
-            <footer className='bg-black relative p-8 md:px-20'>
+            <footer className='bg-gray-200 relative p-8 md:px-20'>
               <div className='flex md:flex-row flex-col justufy-around lg:items-center items-start justify-between md:space-x-16'>
-                <div className='flex flex-col justufy-between items-start text-white mb-10 relative lg:left-0 md:left-10'>
+                <div className='flex flex-col justufy-between items-start text-black mb-10 relative lg:left-0 md:left-10'>
                     <p className='font-bold mb-3'>Location</p>
                     <p className='mb-3'>Isale Eko Avenue, Dolphin Estate, Ikoyi, Lagos, <br /> Nigeria</p>
                     <p>© 2022 Hernalytics</p>
                 </div>
-                <div className='flex flex-col justufy-between items-start text-white mb-10'>
+                <div className='flex flex-col justufy-between items-start text-black mb-10'>
                     <p className='font-bold mb-3'>Quick Links</p>
                     <Link href='/' className='mb-3'>| Home</Link>
                     <Link href='/products' className='mb-3'>| All Products</Link>
+                    <Link className={user.user == 'Admin' || user.user == 'User' ? 'hidden': 'block mb-3'} href='/login'>| Login</Link>
+                    <Link className={user.user == 'Admin' || user.user == 'User' ? 'hidden': 'block mb-3'} href='/signup'>| Signup</Link>
                 </div>
-                <div className='flex flex-col justufy-between items-start text-white mb-10'>
+                <div className='flex flex-col justufy-between items-start text-black mb-10'>
                     <p className='font-bold mb-3'>Let's chat!</p>
                     <p className='mb-3'>hernalytics@gmail.com</p>
                     <p className='mb-3'>+234 801 234 5678</p>

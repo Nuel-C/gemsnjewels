@@ -134,7 +134,7 @@ export default function Home() {
                         <p className="mb-5">
                             We work with expert jewelers who use high quality and enduring materials. From precious metals, set with genuine gemstones and ethically sourced gold, silver, and diamonds.
                         </p>
-                        <button className="bg-gray-950 p-3 text-white">Shop Now</button>
+                        <Link href='/products'><button className="bg-gray-950 p-3 text-white">Shop Now</button></Link>
                     </div>
                     <Image
                         src='/jewelry4.jpeg'

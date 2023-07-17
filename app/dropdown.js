@@ -12,7 +12,7 @@ const Dropdown = ({setCategory, value}) => {
   };
 
   return (
-    <select value={value} onChange={handleSelect} className='rounded-md bg-black text-white p-3 m-2' ref={option}>
+    <select value={value} onChange={handleSelect} className='rounded-md bg-gray-200 text-gray-700 p-3' ref={option}>
       <option value="All">All Products</option>
       <option value="Bracelets">Bracelets</option>
       <option value="Necklaces">Necklaces</option>

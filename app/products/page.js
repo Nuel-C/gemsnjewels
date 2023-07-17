@@ -1,6 +1,4 @@
 'use client'
-import Image from 'next/image'
-import Link from 'next/link'
 import Dropdown from '../dropdown'
 import animationData from '../../public/loading.json';
 import { useState, useEffect, useRef } from "react";
@@ -27,6 +25,8 @@ export default function Page() {
     };
     const [data, setData] = useState();
     const [category, setCategory] = useState('All');
+    const collection = useRef()
+
 
 
     useEffect(() => {
@@ -56,6 +56,45 @@ export default function Page() {
       });
     }, [category]);
 
+    const triggerToggle = (e)=> {
+      e.preventDefault()
+      if(collection.current.value == ''){
+        axios
+        .get("/getAllUploads")
+        .then((res) => {
+          const ff = res.data;
+          setData(undefined)
+          setTimeout(()=>{
+            setData(ff)
+          }, 2000)
+        })
+        .catch((e) => {
+          console.log(e.message);
+        });
+      }
+  
+      if(collection.current == undefined){
+        return console.log(collection.current)
+      }
+      
+      axios
+      .post("/search", {search: collection.current.value})
+      .then((res) => {
+        const ff = res.data;
+        if(ff == []){
+          return
+        }
+        setData(undefined)
+          setTimeout(()=>{
+            setData(ff)
+          }, 2000)
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
+      
+    }
+
   
 
     if (data == undefined) {
@@ -73,25 +112,32 @@ export default function Page() {
     
       if (data.length === 0) {
         return <main className="h-full md:px-12 p-2 mb-32">
-            <div className="flex flex-row justify-end">
-                <div className='flex flex-row justify-between'>
-                    <Dropdown setCategory={setCategory} value={category}/>
-                </div>
-            </div><hr/><br/><br/>
-            <p className="text-center">No products are currently available</p>
+          <div className="w-full">
+              <div className='flex flex-row justify-around align-right items-right w-full'>
+                <form className="flex flex-row justify-between w-full bg-gray-200 h-12 text-gray-700 rounded-md mr-2">
+                  <input type="text" name='collection' ref={collection} className="rounded-md bg-gray-200 text-gray-700 p-2 w-full" placeholder="Search product name"/>
+                  <button onClick={triggerToggle} className="mx-5"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+                <Dropdown setCategory={setCategory} value={category} className='w-1/4'/>
+              </div><br/><hr/><br/>
+            </div>
+            <p className="text-center">No product matches that description</p>
         </main>;
       }
     
     
       return (
-        <main className="h-full mt-24">
+        <main className="h-full">
           <div className="md:px-12 mt-12 p-2 mb-32">
-            <div className="flex flex-row justify-end">
-              <div className='flex flex-row justify-end align-right items-right'>
+            <div className="w-full">
+              <div className='flex flex-row justify-around align-right items-right w-full'>
+                <form className="flex flex-row justify-between w-full bg-gray-200 h-12 text-gray-700 rounded-md mr-2">
+                  <input type="text" name='collection' ref={collection} className="rounded-md bg-gray-200 text-gray-700 p-2 w-full" placeholder="Search product name"/>
+                  <button onClick={triggerToggle} className="mx-5"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
                 <Dropdown setCategory={setCategory} value={category} className='w-1/4'/>
               </div><br/><hr/><br/>
             </div>
-            <hr/><br/><br/>
             <div>
               <div className="grid md:grid-cols-4 grid-cols-2 gap-2 md:gap-5">
                 {data.map((x, index) =>

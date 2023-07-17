@@ -1,26 +1,27 @@
 'use client'
-
 import { useRef } from "react";
-import { useRouter } from 'next/navigation'
 import axios from 'axios'
 
 
-
-
-
 export default function Page() {
-
-    const router = useRouter()
-
-
   const form = useRef()
-
   const submit = async (e) => {
     e.preventDefault()
     let Form = new FormData(form.current)
-    
-    const returnData = await axios.post("https://dappartgallery.com/signup", Form )
-    router.push('/')
+    if(Form.get('password') != Form.get('confirm')) return alert("passwords do not match")    
+    //const returnData = await axios.post('/signup', Form)
+    const returnData = await axios({
+      method: "post",
+      url: "/register",
+      data: Form,
+    })
+    if(returnData.data.msg == true) {
+      const jsonObject = JSON.stringify(returnData.data);
+      sessionStorage.setItem('user', jsonObject);
+      window.location.href = '/products'
+    }
+    if(returnData.data.msg == false) alert('An error occured')
+    if(typeof returnData.data.msg == 'string') alert(returnData.data.msg)
   }
 
   return (
