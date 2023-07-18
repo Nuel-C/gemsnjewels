@@ -10,10 +10,6 @@ import OrderItem from './orderItem';
 
 export default function Page() {
     let parsedObject 
-    if (typeof window !== 'undefined') {
-      const str = sessionStorage.getItem('user');            
-      parsedObject = JSON.parse(str);
-    }
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -26,6 +22,10 @@ export default function Page() {
       const id = useRef()
       
     useEffect(() => {
+      if (typeof window !== 'undefined') {
+        const str = sessionStorage.getItem('user');            
+        parsedObject = JSON.parse(str);
+      }
       axios
       .get("/getAllOrders")
       .then((res) => {

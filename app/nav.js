@@ -7,12 +7,13 @@ const Nav = () => {
   const [selectedOption, setSelectedOption] = useState('');
   const [user, setUser] = useState({user:'none'})
   let parsedObject 
-  if (typeof window !== 'undefined') {
-    const str = sessionStorage.getItem('user');            
-    parsedObject = JSON.parse(str);
-  }
+  
   
   useEffect(()=>{
+    if (typeof window !== 'undefined') {
+      const str = sessionStorage.getItem('user');            
+      parsedObject = JSON.parse(str);
+    }
     if(parsedObject == null){
       return setUser({user:'none'})
     }

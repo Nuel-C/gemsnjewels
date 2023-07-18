@@ -25,15 +25,15 @@ export const pacifico = Pacifico({
 
 export default function RootLayout({ children }) {
   let parsedObject 
-  if (typeof window !== 'undefined') {
-    const str = sessionStorage.getItem('user');            
-    parsedObject = JSON.parse(str);
-  }
   const [user, setUser] = useState({user:'none'})
   const [cartItems, setCartItems] = useState(0)
 
 
   useEffect(()=>{
+    if (typeof window !== 'undefined') {
+      const str = sessionStorage.getItem('user');            
+      parsedObject = JSON.parse(str);
+    }
     if(parsedObject == null){
       return setUser({user:'none'})
     }

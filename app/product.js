@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ImageSlider from './imageSlider';
 import axios from 'axios';
 
@@ -6,10 +6,6 @@ import axios from 'axios';
 
 export const ProductComponent = ({data})=> {
     let parsedObject 
-    if (typeof window !== 'undefined') {
-        const str = sessionStorage.getItem('user');            
-        parsedObject = JSON.parse(str);
-    }
     const [x, setX] = useState(data)
     const [number, setNumber] = useState(0)
     const increase = ()=> {
@@ -50,6 +46,14 @@ export const ProductComponent = ({data})=> {
         style: 'currency',
         currency: 'NGN'
     });
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const str = sessionStorage.getItem('user');            
+            parsedObject = JSON.parse(str);
+        }
+    })
+    
 
     return (
         <div className="p-2 md:p-5 rounded-md bg-gray-200 text-gray-700">
