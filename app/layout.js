@@ -23,11 +23,6 @@ export const pacifico = Pacifico({
   weight: '400'
 })
 
-export const metadata = {
-  title: 'Gems N Jewels',
-  description: 'Find amazing Jewelry for yourself and loved ones',
-}
-
 export default function RootLayout({ children }) {
   let parsedObject 
   if (typeof window !== 'undefined') {
@@ -42,6 +37,7 @@ export default function RootLayout({ children }) {
     if(parsedObject == null){
       return setUser({user:'none'})
     }
+    document.title = 'Gems n Jewels'
     axios
     .post("/getUserCartItems", {userId: parsedObject._id})
     .then((res) => {
