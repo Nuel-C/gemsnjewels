@@ -4,73 +4,74 @@ const nextConfig = {
         return [
           {
             source: '/adminlogin',
-            destination: 'http://localhost:5000/adminlogin',
+            destination: 'https://dappartgalleries.com/adminlogin',
           },
           {
             source: '/upload',
-            destination: 'http://localhost:5000/upload',
+            destination: 'https://dappartgalleries.com/upload',
           },
           {
             source: '/getAllUploads',
-            destination: 'http://localhost:5000/getAllUploads',
+            destination: 'https://dappartgalleries.com/getAllUploads',
           },
           {
             source: '/getByCategory',
-            destination: 'http://localhost:5000/getByCategory',
+            destination: 'https://dappartgalleries.com/getByCategory',
           },
           {
             source: '/deleteProduct',
-            destination: 'http://localhost:5000/deleteProduct',
+            destination: 'https://dappartgalleries.com/deleteProduct',
           },
           {
             source: '/register',
-            destination: 'http://localhost:5000/register',
+            destination: 'https://dappartgalleries.com/register',
           },
           {
             source: '/search',
-            destination: 'http://localhost:5000/search',
+            destination: 'https://dappartgalleries.com/search',
           },
           {
             source: '/getUserCartItems',
-            destination: 'http://localhost:5000/getUserCartItems',
+            destination: 'https://dappartgalleries.com/getUserCartItems',
           },
           {
             source: '/addToCart',
-            destination: 'http://localhost:5000/addToCart',
+            destination: 'https://dappartgalleries.com/addToCart',
           },
           {
             source: '/deleteCartItem',
-            destination: 'http://localhost:5000/deleteCartItem',
+            destination: 'https://dappartgalleries.com/deleteCartItem',
           },
           {
             source: '/userlogin',
-            destination: 'http://localhost:5000/userlogin',
+            destination: 'https://dappartgalleries.com/userlogin',
           },
           {
             source: '/createOrder',
-            destination: 'http://localhost:5000/createOrder',
+            destination: 'https://dappartgalleries.com/createOrder',
           },
           {
             source: '/getUserOrders',
-            destination: 'http://localhost:5000/getUserOrders',
+            destination: 'https://dappartgalleries.com/getUserOrders',
           },
           {
             source: '/getAllOrders',
-            destination: 'http://localhost:5000/getAllOrders',
+            destination: 'https://dappartgalleries.com/getAllOrders',
           },
           {
             source: '/updateOrderStatus',
-            destination: 'http://localhost:5000/updateOrderStatus',
+            destination: 'https://dappartgalleries.com/updateOrderStatus',
           },
           {
             source: '/searchOrderId',
-            destination: 'http://localhost:5000/searchOrderId',
+            destination: 'https://dappartgalleries.com/searchOrderId',
           },
         ]
       },
       images: {
         domains: [
           'localhost',
+          'dappartgalleries.com'
         ],
       },
 }
