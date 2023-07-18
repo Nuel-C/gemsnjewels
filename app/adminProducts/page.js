@@ -54,13 +54,6 @@ export default function Page() {
         });
       }, [category]);
 
-      useEffect(() => {
-        window.navigator.geolocation.getCurrentPosition(
-            (newPos) => setPosition(newPos),
-            console.error
-          );
-      }, []);
-
       const triggerToggle = (e)=> {
         e.preventDefault()
         if(collection.current.value == ''){
