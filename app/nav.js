@@ -10,10 +10,8 @@ const Nav = () => {
   
   
   useEffect(()=>{
-    if (typeof window !== 'undefined') {
-      const str = sessionStorage.getItem('user');            
-      parsedObject = JSON.parse(str);
-    }
+    const str = sessionStorage.getItem('user');            
+    parsedObject = JSON.parse(str);
     if(parsedObject == null){
       return setUser({user:'none'})
     }

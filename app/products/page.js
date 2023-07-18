@@ -26,10 +26,8 @@ export default function Page() {
 
 
     useEffect(() => {
-      if (typeof window !== 'undefined') {
-        const str = sessionStorage.getItem('user');            
-        parsedObject = JSON.parse(str);
-      }
+      const str = sessionStorage.getItem('user');            
+      parsedObject = JSON.parse(str);
       axios
       .get("/getAllUploads")
       .then((res) => {

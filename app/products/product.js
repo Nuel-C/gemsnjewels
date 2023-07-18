@@ -45,10 +45,8 @@ export const ProductComponent = ({data})=> {
     });
 
     useEffect(()=>{
-        if (typeof window !== 'undefined') {
-            const str = sessionStorage.getItem('user');            
-            parsedObject = JSON.parse(str);
-        }
+        const str = sessionStorage.getItem('user');            
+        parsedObject = JSON.parse(str);
     })
 
     return (

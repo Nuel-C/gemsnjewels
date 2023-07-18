@@ -22,10 +22,8 @@ export default function Page() {
       const id = useRef()
       
     useEffect(() => {
-      if (typeof window !== 'undefined') {
-        const str = sessionStorage.getItem('user');            
-        parsedObject = JSON.parse(str);
-      }
+      const str = sessionStorage.getItem('user');            
+      parsedObject = JSON.parse(str);
       axios
       .get("/getAllOrders")
       .then((res) => {

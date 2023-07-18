@@ -21,10 +21,8 @@ export default function Page() {
       const [data, setData] = useState();
       
     useEffect(() => {
-      if (typeof window !== 'undefined') {
-        const str = sessionStorage.getItem('user');            
-        parsedObject = JSON.parse(str);
-      }
+      const str = sessionStorage.getItem('user');            
+      parsedObject = JSON.parse(str);
       axios
       .post("/getUserOrders", {
         userId:parsedObject._id,
