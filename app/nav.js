@@ -41,12 +41,12 @@ const Nav = () => {
                     <div className='text-right'>
                         <i class="fa-solid fa-xmark fa-sharp text-white text-xl" onClick={close}></i> 
                     </div>
-                    <Link href='/' onClick={close}>Home</Link>
-                    <Link href='/products' className={user.user === 'Admin' ? 'hidden' : 'block'} onClick={close}>All Products</Link>
-                    <Link href='/adminProducts' className={user.user === 'Admin' ? 'block' : 'hidden'} onClick={close}>All Products</Link>
-                    <Link href='/userOrders' onClick={close} className={user.user === 'Admin' ? 'hidden' : 'block'}>My Orders</Link>
-                    <Link href='/adminOrders' onClick={close} className={user.user === 'Admin' ? 'block' : 'hidden'}>Orders</Link>
-                    <Link href='/newProduct' onClick={close} className={user.user === 'Admin' ? 'block' : 'hidden'}>New Product</Link>
+                    <Link href='/' onClick={close}><i class="fa-solid fa-house"></i> Home</Link>
+                    <Link href='/products' className={user.user === 'Admin' ? 'hidden' : 'block'} onClick={close}><i class="fa-regular fa-gem"></i> All Products</Link>
+                    <Link href='/adminProducts' className={user.user === 'Admin' ? 'block' : 'hidden'} onClick={close}><i class="fa-regular fa-gem"></i> All Products</Link>
+                    <Link href='/userOrders' onClick={close} className={user.user === 'Admin' ? 'hidden' : 'block'}><i class="fa-solid fa-bag-shopping"></i> My Orders</Link>
+                    <Link href='/adminOrders' onClick={close} className={user.user === 'Admin' ? 'block' : 'hidden'}><i class="fa-solid fa-bag-shopping"></i> Orders</Link>
+                    <Link href='/newProduct' onClick={close} className={user.user === 'Admin' ? 'block' : 'hidden'}><i class="fa-solid fa-file-arrow-up"></i> New Product</Link>
                 </div>
                 <div id='nv' className='md:w-full w-1/2 h-full'>           
                 </div>

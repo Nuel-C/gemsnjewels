@@ -46,6 +46,26 @@ const nextConfig = {
             source: '/userlogin',
             destination: 'http://localhost:5000/userlogin',
           },
+          {
+            source: '/createOrder',
+            destination: 'http://localhost:5000/createOrder',
+          },
+          {
+            source: '/getUserOrders',
+            destination: 'http://localhost:5000/getUserOrders',
+          },
+          {
+            source: '/getAllOrders',
+            destination: 'http://localhost:5000/getAllOrders',
+          },
+          {
+            source: '/updateOrderStatus',
+            destination: 'http://localhost:5000/updateOrderStatus',
+          },
+          {
+            source: '/searchOrderId',
+            destination: 'http://localhost:5000/searchOrderId',
+          },
         ]
       },
       images: {

@@ -106,7 +106,7 @@ export default function RootLayout({ children }) {
 
         {children}
 
-        <div>
+        <div className='mt-96'>
             <footer className='bg-gray-200 relative p-8 md:px-20'>
               <div className='flex md:flex-row flex-col justufy-around lg:items-center items-start justify-between md:space-x-16'>
                 <div className='flex flex-col justufy-between items-start text-black mb-10 relative lg:left-0 md:left-10'>
@@ -146,6 +146,7 @@ export default function RootLayout({ children }) {
             </footer>
         </div>
       </body>
+      <Script src="https://checkout.flutterwave.com/v3.js"/>
       <Script src="https://kit.fontawesome.com/77cfc6d17b.js" crossorigin="anonymous"/>
     </html>
   )

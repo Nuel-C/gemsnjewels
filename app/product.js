@@ -22,26 +22,29 @@ export const ProductComponent = ({data})=> {
         setNumber(number-1)
     }
     const addProduct = async (id)=> {
-        if(number == 0)return
-        const res = await axios.post('/addToCart', {
-            userId: parsedObject._id,
-            productId:id,
-            price:x.price,
-            description:x.description,
-            name:x.name,
-            category:x.category,
-            number: number,
-            images: x.filepath
-        })
-        if(res.data.success == true){
-            alert('Added '+x.name+' X '+number+' to cart')
-            window.location.href = '/products'
-            setNumber(0)
+        try {
+            if(number == 0)return
+            const res = await axios.post('/addToCart', {
+                userId: parsedObject._id,
+                productId:id,
+                price:x.price,
+                description:x.description,
+                name:x.name,
+                category:x.category,
+                number: number,
+                images: x.filepath
+            })
+            if(res.data.success == true){
+                alert('Added '+x.name+' X '+number+' to cart')
+                window.location.href = '/products'
+                setNumber(0)
+            }
+            if(res.data.success == false){
+                alert('An error occured')
+            }
+        } catch (error) {
+            window.location.href='/login'
         }
-        if(res.data.success == false){
-            alert('An error occured')
-        }
-
     }
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',

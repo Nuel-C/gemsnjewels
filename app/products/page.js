@@ -121,7 +121,7 @@ export default function Page() {
                 <Dropdown setCategory={setCategory} value={category} className='w-1/4'/>
               </div><br/><hr/><br/>
             </div>
-            <p className="text-center">No product matches that description</p>
+            <p className="text-center mt-44">No product matches that description</p>
         </main>;
       }
     
