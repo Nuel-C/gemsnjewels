@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import ImageSlider from './imageSlider';
 import axios from 'axios'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 
 

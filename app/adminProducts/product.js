@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import ImageSlider from '../imageSlider';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 
 

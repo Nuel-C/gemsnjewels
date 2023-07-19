@@ -6,7 +6,7 @@ import Lottie from 'react-lottie';
 import CartItem from './cartItem';
 import Headder from '../headder';
 import { useSelector } from 'react-redux'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 
 

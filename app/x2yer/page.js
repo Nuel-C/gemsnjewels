@@ -1,10 +1,10 @@
 'use client'
 
-// import { useRouter } from "next/router"
+// import { useRouter } from "next/navigation"
 import { useRef } from "react"
 import axios from 'axios'
 import Headder from "../headder"
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { updateUser } from '../../redux/userslice'
 import { useDispatch } from "react-redux";
 
