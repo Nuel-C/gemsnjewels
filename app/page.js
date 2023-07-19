@@ -2,10 +2,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import animationData from '../public/loading.json';
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios'
 import Lottie from 'react-lottie';
 import ProductComponent from './product';
+import Headder from './headder';
+import { useRouter } from 'next/navigation'
+import { useSelector } from 'react-redux'
+
 
 
 
@@ -19,55 +23,99 @@ export default function Home() {
           preserveAspectRatio: "xMidYMid slice"
         }
     };
-    const [data, setData] = useState();
+    const [data, setData] = useState()
+    const router = useRouter()
+    const [user, setUser] = useState(useSelector((state) => state.user))
 
-    const collection = useRef()
 
 
 
     useEffect(() => {
         axios
-          .get("/getAllUploads")
-          .then((res) => {
-            const ff = res.data;
-            if(ff.length > 8){
-                var x=[]
-                for(var i = 0; i < ff.length; i++){
-                    x.push[ff[i]]
-                }
-                return setData(x)
+        .get("/getAllUploads")
+        .then((res) => {
+        const ff = res.data;
+        if(ff.length > 8){
+            var x=[]
+            for(var i = 0; i < ff.length; i++){
+                x.push[ff[i]]
             }
-            setData(ff);
-          })
-          .catch((e) => {
-            console.log(e.message);
-          });
+            return setData(x)
+        }
+        setData(ff);
+        })
+        .catch((e) => {
+        console.log(e.message);
+        });
       }, []);
+
+      const addProduct = async (id, number, price, description, name, category, filepath)=> {
+        try {
+            if(number == 0) return
+            if(user.user == 'none') return router.push('/login')
+            const res = await axios.post('/addToCart', {
+                userId: user._id,
+                productId:id,
+                price:price,
+                description:description,
+                name:name,
+                category:category,
+                number: number,
+                images: filepath
+            })
+            if(res.data.success == true){
+                alert('Added '+name+' X '+number+' to cart')
+                axios
+                .get("/getAllUploads")
+                .then((res) => {
+                const ff = res.data;
+                if(ff.length > 8){
+                    var x=[]
+                    for(var i = 0; i < ff.length; i++){
+                        x.push[ff[i]]
+                    }
+                    return setData(x)
+                }
+                setData(ff);
+                })
+                .catch((e) => {
+                console.log(e.message);
+                });
+            }
+        }catch(e){
+            router.push('/login')
+        }}
+  
 
       
       if (data == undefined) {
         return (
             <main className="h-full flex flex-col justify-center align-center">
-            <Lottie 
-                options={defaultOptions}
-                height={500}
-                width={400}
-                className='w-full h-full'
-            />
+                <Headder/>
+                <Lottie 
+                    options={defaultOptions}
+                    height={500}
+                    width={400}
+                    className='w-full h-full'
+                />
             </main>
         );
     }
 
     if (data.length === 0) {
-        return <main className="h-full md:px-12 p-2 mb-32 mt-32">
-            <p className="text-center">No products are currently available</p>
+        return <main className="h-full">
+            <Headder/>
+            <div className='md:px-12 p-2 mb-32 mt-32'>
+                <p className="text-center">No products are currently available</p>
+            </div>
         </main>;
     }
 
     
 
   return (
-    <main className="h-full mt-5">
+    <main className="h-full">
+        <Headder/>
       <div className="flex md:flex-row flex-col-reverse justify-around md:px-12 p-2">
         <div className="w-full" id="first_image">
             <Image
@@ -119,7 +167,7 @@ export default function Home() {
         <div>
             <div className="grid md:grid-cols-4 grid-cols-2 gap-2 md:gap-5">
             {data.map((x, index) => 
-                <ProductComponent data={x} key={index}/>
+                <ProductComponent data={x} key={index} addProduct={addProduct}/>
                 )
             }
             </div>

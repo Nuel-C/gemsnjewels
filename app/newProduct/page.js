@@ -1,7 +1,7 @@
 'use client'
 import { useRef, useState, useEffect } from "react";
 import axios from 'axios'
-
+import Headder from "../headder";
 
 
 
@@ -49,7 +49,9 @@ export default function Page() {
   
 
   return (
-    <main className="h-full flex flex-col justify-center items-center p-12 mt-5 mb-24">
+    <main>
+      <Headder/>
+      <div className="h-full flex flex-col justify-center items-center p-12 mt-5 mb-24">
           <h1 className="mb-7 text-2xl font-bold">New Product</h1>
           <form className="flex flex-col space-y-5 text-md md:w-1/3 w-full" ref={form} id='form'>
               <label>
@@ -97,6 +99,8 @@ export default function Page() {
               </div>
               <button onClick={submit} className="w-full p-2 bg-black text-white text-sm rounded-md"><i class="fa-solid fa-upload"></i> Upload</button>
           </form>
+      </div>
+
     </main>
   )
 }

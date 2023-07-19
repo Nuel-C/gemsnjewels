@@ -2,21 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useSelector } from 'react-redux'
 
 const Nav = () => {
   const [selectedOption, setSelectedOption] = useState('');
-  const [user, setUser] = useState({user:'none'})
-  let parsedObject 
-  
-  
-  useEffect(()=>{
-    const str = sessionStorage.getItem('user');            
-    parsedObject = JSON.parse(str);
-    if(parsedObject == null){
-      return setUser({user:'none'})
-    }
-    setUser(parsedObject)
-  }, [])
+  const [user, setUser] = useState(useSelector((state) => state.user))
 
   const handleSelect = (event) => {
     setSelectedOption(event.target.value);

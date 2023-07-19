@@ -3,31 +3,36 @@
 import { useRouter } from "next/navigation"
 import { useRef } from "react"
 import axios from 'axios'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateUser } from '../../redux/userslice'
+import Headder from "../headder"
 
 
 export default function page() {
     const router = useRouter()
     const form = useRef()
+    const user = useSelector((state) => state.user)
+    const dispatch = useDispatch()
     const submit = async (e) => {
         e.preventDefault()
-        let Form = new FormData(form.current)
-        const data = await axios.post('/userlogin', Form)
-        console.log(data.data)
-        if(data.data.msg == 'error'){
+        try {
+            let Form = new FormData(form.current)
+            const data = await axios.post('/userlogin', Form)
+            if(data.data.msg == 'error'){
+                return alert('Invalid Credentials')
+            }
+            if(data.data.msg == 'success'){
+                dispatch(updateUser(data.data))
+                router.push('/')
+            }
+        } catch (error) {
             return alert('Invalid Credentials')
-        }
-        if(data.data.msg == 'success'){
-            const jsonObject = JSON.stringify(data.data);
-            sessionStorage.setItem('user', jsonObject);
-            const str = sessionStorage.getItem('user');            
-            const parsedObject = JSON.parse(str);
-            console.log(parsedObject);
-            window.location.href = '/products'
         }
     }
     return (
-        <main className="px-32 text-sm mb-44">
-            <div className="flex flex-col justify-center md:xm-24 p-12 items-center">
+        <main className="">
+            <Headder/>
+            <div className="flex flex-col justify-center md:xm-24 p-12 items-center px-32 text-sm mb-44">
                 <p className="font-bold text-2xl">Login</p><br></br>
                 <form action="" className='w-80 h-full' ref={form}>
                     <label className="flex flex-col mb-5">

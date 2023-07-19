@@ -4,12 +4,15 @@ import { useState, useEffect } from "react";
 import axios from 'axios'
 import Lottie from 'react-lottie';
 import OrderItem from './orderItem';
+import { useSelector } from 'react-redux'
+import Headder from '../headder';
+import { useRouter } from 'next/navigation';
+
 
 
 
 
 export default function Page() {
-    let parsedObject 
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -19,13 +22,14 @@ export default function Page() {
         }
       };
       const [data, setData] = useState();
+      const [user, setUser] = useState(useSelector((state) => state.user))
+      const router = useRouter()
+
       
     useEffect(() => {
-      const str = sessionStorage.getItem('user');            
-      parsedObject = JSON.parse(str);
       axios
       .post("/getUserOrders", {
-        userId:parsedObject._id,
+        userId:user._id,
       })
       .then((res) => {
         const ff = res.data;
@@ -39,11 +43,16 @@ export default function Page() {
       });
     }, []);
 
+    
+    if (user.user != 'User') {
+      return router.push('/login')
+    }
   
 
     if (data == undefined) {
         return (
           <main className="h-full flex flex-col justify-center align-center">
+            <Headder/>
             <Lottie 
               options={defaultOptions}
               height={500}
@@ -55,14 +64,18 @@ export default function Page() {
       }
     
       if (data.length === 0) {
-        return <main className="h-full md:px-12 p-2 mb-32">
+        return <main className="h-full">
+          <Headder/>
+          <div className='md:px-12 p-2 mb-32'>
             <p className="text-center mt-44">No orders currently</p>
+          </div>
         </main>;
       }
     
     
       return (
         <main className="h-full">
+          <Headder/>
           <div className="md:px-12 mt-12 p-2 mb-32">
             <div>
               {/* <div className="grid md:grid-cols-4 grid-cols-2 gap-2 md:gap-5"> */}

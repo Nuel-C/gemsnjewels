@@ -1,18 +1,12 @@
 import { useState } from 'react'
 import ImageSlider from '../imageSlider';
-import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 
 
-export const ProductComponent = ({data})=> {
+export const ProductComponent = ({data, deleteProduct})=> {
     const [x, setX] = useState(data)
-    const deleteProduct = async (id)=> {
-        const res = await axios.post('/deleteProduct', {id: id})
-        if(res.data.success == true){
-            alert('Deleted')
-            window.location.href = '/adminProducts'
-        }
-    }
+    const router = useRouter()
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'NGN'

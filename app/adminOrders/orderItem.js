@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import ImageSlider from './imageSlider';
 import axios from 'axios'
+import { useRouter } from 'next/navigation';
 
 
 
-export const OrderItem = ({data})=> {
+export const OrderItem = ({data, updateItem})=> {
     const [x, setX] = useState(data)
+    const router = useRouter()
     const [image, setImage] = useState(()=>{
         let images = []
         data.items.map((x)=>{
@@ -20,19 +22,7 @@ export const OrderItem = ({data})=> {
         style: 'currency',
         currency: 'NGN'
     });
-
-    async function updateItem(id){
-        const res = await axios.post('/updateOrderStatus', {
-            id:id,
-        })
-        if(res.data.success == true){
-            alert('Updated order to delivered')
-            window.location.href = '/adminOrders'
-        }
-        if(res.data.success == false){
-            alert('An error occured')
-        }
-    }
+    
     
 
     return (

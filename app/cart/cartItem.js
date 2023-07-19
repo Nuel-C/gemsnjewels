@@ -1,26 +1,11 @@
 import { useState } from 'react'
 import ImageSlider from './imageSlider';
-import axios from 'axios';
 
 
 
-export const CartItem = ({data})=> {
+
+export const CartItem = ({data, deleteCartItem})=> {
     const [x, setX] = useState(data)
-
-
-    const deleteCartItem = async (id)=> {
-        const res = await axios.post('/deleteCartItem', {
-            productId:id,
-        })
-        if(res.data.success == true){
-            alert('Deleted '+x.name+' X '+x.number+' from cart')
-            window.location.href = '/cart'
-        }
-        if(res.data.success == false){
-            alert('An error occured')
-        }
-
-    }
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'NGN'

@@ -1,10 +1,18 @@
 'use client'
 import { useRef } from "react";
 import axios from 'axios'
+import Headder from "../headder"
+import { useRouter } from 'next/navigation';
+import { useDispatch } from "react-redux";
+import { updateUser } from "@/redux/userslice";
+
+
 
 
 export default function Page() {
   const form = useRef()
+  const router = useRouter()
+  const dispatch = useDispatch()
   const submit = async (e) => {
     e.preventDefault()
     let Form = new FormData(form.current)
@@ -16,16 +24,17 @@ export default function Page() {
       data: Form,
     })
     if(returnData.data.msg == true) {
-      const jsonObject = JSON.stringify(returnData.data);
-      sessionStorage.setItem('user', jsonObject);
-      window.location.href = '/products'
+      dispatch(updateUser(returnData.data))
+      router.push('/products')
     }
     if(returnData.data.msg == false) alert('An error occured')
     if(typeof returnData.data.msg == 'string') alert(returnData.data.msg)
   }
 
   return (
-    <main className="h-full flex flex-col justify-center items-center p-12 mb-24">
+    <main>
+      <Headder/>
+      <div className="h-full flex flex-col justify-center items-center p-12 mb-24">
           <h1 className="mb-7 text-2xl font-bold">Sign Up</h1>
           <form className="flex flex-col space-y-2 text-md md:w-1/3 w-full" ref={form}>
               <label>
@@ -42,6 +51,7 @@ export default function Page() {
               </label>
               <button onClick={submit} className="rounded-full w-full p-2 bg-black text-white text-sm"><i className="fa-solid fa-right-to-bracket"></i> Submit</button>
           </form>
+      </div>
     </main>
   )
 }

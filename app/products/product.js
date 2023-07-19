@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import ImageSlider from '../imageSlider';
-import axios from 'axios';
 
 
 
-export const ProductComponent = ({data})=> {
-    let parsedObject 
+
+export const ProductComponent = ({data, addProduct})=> {
     const [x, setX] = useState(data)
     const [number, setNumber] = useState(0)
     const increase = ()=> {
@@ -17,37 +16,10 @@ export const ProductComponent = ({data})=> {
         }
         setNumber(number-1)
     }
-    const addProduct = async (id)=> {
-        if(number == 0)return
-        const res = await axios.post('/addToCart', {
-            userId: parsedObject._id,
-            productId:id,
-            price:x.price,
-            description:x.description,
-            name:x.name,
-            category:x.category,
-            number: number,
-            images: x.filepath
-        })
-        if(res.data.success == true){
-            alert('Added '+x.name+' X '+number+' to cart')
-            window.location.href = '/products'
-            setNumber(0)
-        }
-        if(res.data.success == false){
-            alert('An error occured')
-        }
-
-    }
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'NGN'
     });
-
-    useEffect(()=>{
-        const str = sessionStorage.getItem('user');            
-        parsedObject = JSON.parse(str);
-    })
 
     return (
         <div className="p-2 md:p-5 rounded-md bg-gray-200 text-gray-700">
@@ -68,7 +40,7 @@ export const ProductComponent = ({data})=> {
                     {number}
                     <button onClick={increase}>+</button>
                 </div>
-                <button onClick={()=> addProduct(x._id)} className="mt-2 bg-white text-black p-2 w-full text-xs">Add</button>
+                <button onClick={()=> {setNumber(0);addProduct(x._id, number, x.price, x.description, x.name, x.category, x.filepath)}} className="mt-2 bg-white text-black p-2 w-full text-xs">Add</button>
             </div>
         </div>
     )
