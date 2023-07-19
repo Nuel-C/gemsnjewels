@@ -83,7 +83,7 @@ export default function Home() {
                 });
             }
         }catch(e){
-            redirect('/login')
+            router.push('/login')
         }}
   
 

@@ -143,7 +143,7 @@ export default function Page() {
               alert('An error occured')
           }
       } catch (error) {
-          redirect('/login')
+          router.push('/login')
       }
   }
 
