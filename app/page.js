@@ -7,7 +7,7 @@ import axios from 'axios'
 import Lottie from 'react-lottie';
 import ProductComponent from './product';
 import Headder from './headder';
-import { redirect } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 import { useSelector } from 'react-redux'
 
 
@@ -25,6 +25,7 @@ export default function Home() {
     };
     const [data, setData] = useState()
     const [user, setUser] = useState(useSelector((state) => state.user))
+    const router = useRouter()
 
 
 
@@ -51,7 +52,7 @@ export default function Home() {
       const addProduct = async (id, number, price, description, name, category, filepath)=> {
         try {
             if(number == 0) return
-            if(user.user == 'none') return redirect('/login')
+            if(user.user == 'none') return router.push('/login')
             const res = await axios.post('/addToCart', {
                 userId: user._id,
                 productId:id,
