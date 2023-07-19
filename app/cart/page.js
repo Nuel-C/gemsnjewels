@@ -73,6 +73,7 @@ export default function Page() {
           })
           .then((res) => {
             if(res.data.success == true){
+              alert('Order created successfully')
               setData([])
           }
           if(res.data.success == false){
