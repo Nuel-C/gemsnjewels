@@ -1,6 +1,6 @@
 'use client'
 
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { useRef } from "react"
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
@@ -10,6 +10,7 @@ import Headder from "../headder"
 
 export default function page() {
     const form = useRef()
+    const router = useRouter()
     const dispatch = useDispatch()
     const submit = async (e) => {
         e.preventDefault()
@@ -17,11 +18,11 @@ export default function page() {
             let Form = new FormData(form.current)
             const data = await axios.post('/userlogin', Form)
             if(data.data.msg == 'error'){
-                return alert('Invalid Credentials')
+                return alert('An error occured')
             }
             if(data.data.msg == 'success'){
                 dispatch(updateUser(data.data))
-                redirect('/')
+                router.push('/')
             }
         } catch (error) {
             return alert('Invalid Credentials')

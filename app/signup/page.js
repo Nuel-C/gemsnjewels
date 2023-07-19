@@ -4,6 +4,7 @@ import axios from 'axios'
 import Headder from "../headder"
 import { useDispatch } from "react-redux";
 import { updateUser } from "@/redux/userslice";
+import { useRouter } from "next/navigation";
 
 
 
@@ -11,6 +12,7 @@ import { updateUser } from "@/redux/userslice";
 export default function Page() {
   const form = useRef()
   const dispatch = useDispatch()
+  const router = useRouter()
   const submit = async (e) => {
     e.preventDefault()
     let Form = new FormData(form.current)
@@ -23,7 +25,7 @@ export default function Page() {
     })
     if(returnData.data.msg == true) {
       dispatch(updateUser(returnData.data))
-      redirect('/products')
+      router.push('/products')
     }
     if(returnData.data.msg == false) alert('An error occured')
     if(typeof returnData.data.msg == 'string') alert(returnData.data.msg)
