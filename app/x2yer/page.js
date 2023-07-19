@@ -1,20 +1,17 @@
 'use client'
 
-// import { useRouter } from "next/navigation"
 import { useRef } from "react"
 import axios from 'axios'
 import Headder from "../headder"
-import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { updateUser } from '../../redux/userslice'
 import { useDispatch } from "react-redux";
 
 
 
 export default function page() {
-    // const router = useRouter()
     const form = useRef()
     const dispatch = useDispatch()
-    const router = useRouter()
     const submit = async (e) => {
         e.preventDefault()
         let Form = new FormData(form.current)
@@ -24,7 +21,7 @@ export default function page() {
         }
         if(data.data.msg == 'success'){
             dispatch(updateUser(data.data))
-            router.push('/adminProducts')
+            redirect('/adminProducts')
 
         }
     }

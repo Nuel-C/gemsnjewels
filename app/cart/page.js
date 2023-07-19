@@ -6,7 +6,7 @@ import Lottie from 'react-lottie';
 import CartItem from './cartItem';
 import Headder from '../headder';
 import { useSelector } from 'react-redux'
-import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 
 
@@ -23,7 +23,6 @@ export default function Page() {
       const [data, setData] = useState();
       const [total, setTotal] = useState(0)
       const address = useRef()
-      const router = useRouter()
       const [user, setUser] = useState(useSelector((state) => state.user))
       const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -133,7 +132,7 @@ export default function Page() {
   }
 
   if( user.user == 'none' || user.user == 'Admin'){
-      router.push('/login')
+      redirect('/login')
       return
   }
 

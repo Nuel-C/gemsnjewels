@@ -6,7 +6,7 @@ import Lottie from 'react-lottie';
 import OrderItem from './orderItem';
 import { useSelector } from 'react-redux'
 import Headder from '../headder';
-import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 
 
@@ -23,7 +23,6 @@ export default function Page() {
       };
       const [data, setData] = useState();
       const [user, setUser] = useState(useSelector((state) => state.user))
-      const router = useRouter()
 
       
     useEffect(() => {
@@ -45,7 +44,7 @@ export default function Page() {
 
     
     if (user.user != 'User') {
-      return router.push('/login')
+      return redirect('/login')
     }
   
 

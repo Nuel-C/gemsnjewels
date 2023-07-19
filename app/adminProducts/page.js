@@ -6,7 +6,7 @@ import axios from 'axios'
 import Lottie from 'react-lottie';
 import ProductComponent from './product';
 import Headder from '../headder';
-import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { useSelector } from 'react-redux'
 
 
@@ -23,7 +23,6 @@ export default function Page() {
     const [data, setData] = useState();
     const [category, setCategory] = useState('All');
     const collection = useRef()
-    const router = useRouter()
     const [user, setUser] = useState(useSelector((state) => state.user))
 
 
@@ -118,7 +117,7 @@ export default function Page() {
 
 
     if( user == {user:'none'} || user.user == 'User'){
-        router.push('/x2yer')
+        redirect('/x2yer')
         return
     }
 

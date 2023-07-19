@@ -1,17 +1,15 @@
 'use client'
 
-import { useRouter } from "next/navigation"
+import { redirect } from "next/navigation"
 import { useRef } from "react"
 import axios from 'axios'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { updateUser } from '../../redux/userslice'
 import Headder from "../headder"
 
 
 export default function page() {
-    const router = useRouter()
     const form = useRef()
-    const user = useSelector((state) => state.user)
     const dispatch = useDispatch()
     const submit = async (e) => {
         e.preventDefault()
@@ -23,7 +21,7 @@ export default function page() {
             }
             if(data.data.msg == 'success'){
                 dispatch(updateUser(data.data))
-                router.push('/')
+                redirect('/')
             }
         } catch (error) {
             return alert('Invalid Credentials')

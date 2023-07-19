@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import ImageSlider from '../imageSlider';
-import { useRouter } from 'next/navigation';
 
 
 
 export const ProductComponent = ({data, deleteProduct})=> {
     const [x, setX] = useState(data)
-    const router = useRouter()
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'NGN'

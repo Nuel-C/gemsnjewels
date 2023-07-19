@@ -1,13 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import ImageSlider from './imageSlider';
-import axios from 'axios'
-import { useRouter } from 'next/navigation';
 
 
 
 export const OrderItem = ({data, updateItem})=> {
     const [x, setX] = useState(data)
-    const router = useRouter()
     const [image, setImage] = useState(()=>{
         let images = []
         data.items.map((x)=>{
