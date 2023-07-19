@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/router"
 import { useRef } from "react"
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'

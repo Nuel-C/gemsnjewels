@@ -6,7 +6,7 @@ import axios from 'axios'
 import Lottie from 'react-lottie';
 import ProductComponent from './product';
 import Headder from '../headder';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux'
 
 
