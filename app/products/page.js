@@ -116,28 +116,40 @@ export default function Page() {
               alert('Added '+name+' X '+number+' to cart')
               axios
               .get("/getAllUploads")
+              // .then((res) => {
+              //   const ff = res.data;
+              //   if (ff == undefined || ff === 0) return
+              //   if(category == 'All'){
+              //     setData(undefined)
+              //     setTimeout(()=>{
+              //       setData(ff)
+              //     }, 2000)
+              //   }else{
+              //     const x = ff.filter((x)=>{
+              //       return x.category == category
+              //     })
+              //     console.log(x)
+              //     setData(undefined)
+              //     setTimeout(()=>{
+              //       setData(x)
+              //     }, 2000)
+              //   }
+              // })
+              // .catch((e) => {
+              //   console.log(e.message);
+              // });\
               .then((res) => {
-                const ff = res.data;
-                if (ff == undefined || ff === 0) return
-                if(category == 'All'){
-                  setData(undefined)
-                  setTimeout(()=>{
-                    setData(ff)
-                  }, 2000)
-                }else{
-                  const x = ff.filter((x)=>{
-                    return x.category == category
-                  })
-                  console.log(x)
-                  setData(undefined)
-                  setTimeout(()=>{
-                    setData(x)
-                  }, 2000)
-                }
+                if(res.data.success == true){
+                  alert('Order created successfully')
+                  setData([])
+              }
+              if(res.data.success == false){
+                  alert('An error occured')
+              }
               })
               .catch((e) => {
                 console.log(e.message);
-              });
+              }); 
           }
           if(res.data.success == false){
               alert('An error occured')
