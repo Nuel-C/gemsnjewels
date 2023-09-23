@@ -19,7 +19,18 @@ export const CartItem = ({data, deleteCartItem})=> {
                         {x.name}
                     </p>
                     <hr />
-                    <textarea style={{overFlow:'hidden', resize:'none'}} rows={2} className="w-full text-sm mb-2 mt-2 bg-gray-200 text-gray-700" value={x.description} readOnly></textarea>
+                    <p className="text-xs font-bold text-slate-500 mb-2">
+                        Product Description
+                    </p>
+                    <textarea style={{overFlow:'hidden', resize:'none'}} rows={2} className="w-full text-sm mb-2 mt-2 bg-gray-200 text-gray-700 border-2 border-slate-300 p-2 rounded-md" value={x.description} readOnly></textarea>
+                    {
+                        x.spec ? 
+                        <>
+                        <p className="text-xs font-bold text-slate-500 mb-2">Client Description</p>
+                        <textarea style={{overFlow:'hidden', resize:'none'}} rows={2} className="w-full h-16 text-sm mb-2 mt-2 bg-gray-200 text-gray-700 border-2 border-slate-300 p-2 rounded-md" value={x.spec}></textarea>
+                        </>
+                        : null
+                    }
                     <p>
                         {formatter.format(x.price)}
                     </p>

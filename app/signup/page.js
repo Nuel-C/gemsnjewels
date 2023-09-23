@@ -41,7 +41,7 @@ export default function Page() {
                   <input required type="email" placeholder="Email" className="rounded-full w-full border border-black p-2" name="email"/>
               </label>
               <label>
-                  <input required type="number" placeholder="Phone Number" className="rounded-full w-full border border-black p-2" name="phone"/>
+                  <input required type="text" placeholder="Phone Number" className="rounded-full w-full border border-black p-2" name="phone"/>
               </label>
               <label>
                   <input required type="password" placeholder="Password" className="rounded-full w-full border border-black p-2" name="password"/>

@@ -36,12 +36,15 @@ export const OrderItem = ({data, updateItem})=> {
                     <p className="text-xs text-slate-500 mb-2">
                         {x.date}
                     </p>
+                    <p className="text-xs text-slate-500 mb-2">
+                        {x.phone}
+                    </p>
                     <textarea style={{overFlow:'hidden', resize:'none'}} rows={2} className="w-full text-sm mb-2 mt-2 bg-gray-200 text-gray-700" value={x.deliveryAddress} readOnly></textarea>
                     <div>
                         {
                             x.items.map((r)=>(
                                 <div>
-                                    <p className='text-xs'>{r.name} X {r.number}</p><hr className='border-black'/>
+                                    <p className='text-xs'>{r.name} X {r.number} {r.spec ? <>.... {r.spec}</> : '.... Regular order'}</p><hr className='border-black'/>
                                 </div>
                             ))
                         }

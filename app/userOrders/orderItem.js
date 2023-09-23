@@ -48,7 +48,7 @@ export const OrderItem = ({data})=> {
                         {
                             x.items.map((r)=>(
                                 <div>
-                                    <p className='text-xs'>{r.name} X {r.number}</p><hr className='border-black'/>
+                                    <p className='text-xs'>{r.name} X {r.number} {r.spec ? <>.... {r.spec}</> : '.... Regular order'}</p><hr className='border-black'/>
                                 </div>
                             ))
                         }

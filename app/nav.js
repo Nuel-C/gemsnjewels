@@ -31,8 +31,9 @@ const Nav = () => {
                         <i class="fa-solid fa-xmark fa-sharp text-white text-xl" onClick={close}></i> 
                     </div>
                     <Link href='/' onClick={close}><i class="fa-solid fa-house"></i> Home</Link>
-                    <Link href='/products' className={user.user === 'Admin' ? 'hidden' : 'block'} onClick={close}><i class="fa-regular fa-gem"></i> All Products</Link>
+                    <Link href='/products' className={user.user === 'Admin' ? 'hidden' : 'block'} onClick={close}><i class="fa-regular fa-gem"></i> Regular Jewelry</Link>
                     <Link href='/adminProducts' className={user.user === 'Admin' ? 'block' : 'hidden'} onClick={close}><i class="fa-regular fa-gem"></i> All Products</Link>
+                    <Link href='/custom' onClick={close} className={user.user === 'Admin' ? 'hidden' : 'block'}><i class="fa-solid fa-pen-to-square"></i> Custom Jewelry</Link>
                     <Link href='/userOrders' onClick={close} className={user.user === 'Admin' ? 'hidden' : 'block'}><i class="fa-solid fa-bag-shopping"></i> My Orders</Link>
                     <Link href='/adminOrders' onClick={close} className={user.user === 'Admin' ? 'block' : 'hidden'}><i class="fa-solid fa-bag-shopping"></i> Orders</Link>
                     <Link href='/newProduct' onClick={close} className={user.user === 'Admin' ? 'block' : 'hidden'}><i class="fa-solid fa-file-arrow-up"></i> New Product</Link>

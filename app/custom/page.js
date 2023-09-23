@@ -34,7 +34,7 @@ export default function Page() {
 
     useEffect(() => {
       axios
-      .get("/getRegularUploads")
+      .get("/getCustomUploads")
       .then((res) => {
         const ff = res.data;
         if (ff == undefined || ff === 0) return
@@ -63,7 +63,7 @@ export default function Page() {
       e.preventDefault()
       if(collection.current.value == ''){
         axios
-        .get("/getRegularUploads")
+        .get("/getCustomUploads")
         .then((res) => {
           const ff = res.data;
           setData(undefined)
@@ -98,10 +98,11 @@ export default function Page() {
       
     }
 
-    const addProduct = async (id, number, price, description, name, category, filepath)=> {
+    const addProduct = async (id, number, price, description, name, category, filepath, spec)=> {
       try {
-          if(number == 0) return
           if(user.user == 'none') return router.push('/login')
+          if(number == 0) return
+          if(spec == '') return alert('please add a description')
           const res = await axios.post('/addToCart', {
               userId: user._id,
               productId:id,
@@ -110,12 +111,13 @@ export default function Page() {
               name:name,
               category:category,
               number: number,
-              images: filepath
+              images: filepath,
+              spec:spec
           })
           if(res.data.success == true){
               alert('Added '+name+' X '+number+' to cart')
               axios
-              .get("/getRegularUploads")
+              .get("/getCustomUploads")
               .then((res) => {
                 const ff = res.data;
                 setData(undefined)

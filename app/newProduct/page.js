@@ -59,6 +59,14 @@ export default function Page() {
                   <input ref={name} required type="text" placeholder="Name" className="border border-black rounded-full mt-2 p-2 w-full" name="name"/>
               </label>
               <label>
+                <p>Product type</p>
+                <select required className="border border-black rounded-full mt-2 p-2 w-full" name='type'>
+                    <option value="">-- Type --</option>
+                    <option value="Custom">Custom</option>
+                    <option value="Regular">Regular</option>
+                </select>
+              </label>
+              <label>
                   <p>Product Description</p>
                   <textarea ref={description} required rows='5' type="text" placeholder="Description" className="border border-black rounded mt-2 p-2 w-full" name="description"></textarea>
               </label>

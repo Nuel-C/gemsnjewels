@@ -32,7 +32,7 @@ export default function Home() {
 
     useEffect(() => {
         axios
-        .get("/getAllUploads")
+        .get("/getRegularUploads")
         .then((res) => {
         const ff = res.data;
         if(ff.length > 8){
