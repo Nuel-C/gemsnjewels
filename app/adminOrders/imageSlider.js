@@ -20,7 +20,7 @@ export const Slider = ({item})=> {
         >
             {
                 data.map((x, index)=>(
-                    <SwiperSlide><Image unoptimized src={'http://localhost:5000'+x} className="w-full h-24 rounded-md" width={400} height={400} alt='Product image'/></SwiperSlide>
+                    <SwiperSlide><Image unoptimized src={'https://citesbnknewyork.com'+x} className="w-full h-24 rounded-md" width={400} height={400} alt='Product image'/></SwiperSlide>
                 ))
             }
         </Swiper>

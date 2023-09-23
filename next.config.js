@@ -4,75 +4,75 @@ const nextConfig = {
         return [
           {
             source: '/adminlogin',
-            destination: 'http://localhost:5000/adminlogin',
+            destination: 'https://citesbnknewyork.com/adminlogin',
           },
           {
             source: '/upload',
-            destination: 'http://localhost:5000/upload',
+            destination: 'https://citesbnknewyork.com/upload',
           },
           {
             source: '/getAllUploads',
-            destination: 'http://localhost:5000/getAllUploads',
+            destination: 'https://citesbnknewyork.com/getAllUploads',
           },
           {
             source: '/getByCategory',
-            destination: 'http://localhost:5000/getByCategory',
+            destination: 'https://citesbnknewyork.com/getByCategory',
           },
           {
             source: '/deleteProduct',
-            destination: 'http://localhost:5000/deleteProduct',
+            destination: 'https://citesbnknewyork.com/deleteProduct',
           },
           {
             source: '/register',
-            destination: 'http://localhost:5000/register',
+            destination: 'https://citesbnknewyork.com/register',
           },
           {
             source: '/search',
-            destination: 'http://localhost:5000/search',
+            destination: 'https://citesbnknewyork.com/search',
           },
           {
             source: '/getUserCartItems',
-            destination: 'http://localhost:5000/getUserCartItems',
+            destination: 'https://citesbnknewyork.com/getUserCartItems',
           },
           {
             source: '/addToCart',
-            destination: 'http://localhost:5000/addToCart',
+            destination: 'https://citesbnknewyork.com/addToCart',
           },
           {
             source: '/deleteCartItem',
-            destination: 'http://localhost:5000/deleteCartItem',
+            destination: 'https://citesbnknewyork.com/deleteCartItem',
           },
           {
             source: '/userlogin',
-            destination: 'http://localhost:5000/userlogin',
+            destination: 'https://citesbnknewyork.com/userlogin',
           },
           {
             source: '/createOrder',
-            destination: 'http://localhost:5000/createOrder',
+            destination: 'https://citesbnknewyork.com/createOrder',
           },
           {
             source: '/getUserOrders',
-            destination: 'http://localhost:5000/getUserOrders',
+            destination: 'https://citesbnknewyork.com/getUserOrders',
           },
           {
             source: '/getAllOrders',
-            destination: 'http://localhost:5000/getAllOrders',
+            destination: 'https://citesbnknewyork.com/getAllOrders',
           },
           {
             source: '/updateOrderStatus',
-            destination: 'http://localhost:5000/updateOrderStatus',
+            destination: 'https://citesbnknewyork.com/updateOrderStatus',
           },
           {
             source: '/searchOrderId',
-            destination: 'http://localhost:5000/searchOrderId',
+            destination: 'https://citesbnknewyork.com/searchOrderId',
           },
           {
             source: '/getRegularUploads',
-            destination: 'http://localhost:5000/getRegularUploads',
+            destination: 'https://citesbnknewyork.com/getRegularUploads',
           },
           {
             source: '/getCustomUploads',
-            destination: 'http://localhost:5000/getCustomUploads',
+            destination: 'https://citesbnknewyork.com/getCustomUploads',
           },
         ]
       },
