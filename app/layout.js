@@ -39,6 +39,7 @@ export default function RootLayout({ children }) {
         </body>
         <Script src="https://checkout.flutterwave.com/v3.js"/>
         <Script src="https://kit.fontawesome.com/77cfc6d17b.js" crossorigin="anonymous"/>
+        <script src="//code.tidio.co/n2qwloju0ktxznzkethjdjaf8uvdnhmj.js" async></script>
       </html>
     </Provider>
   )

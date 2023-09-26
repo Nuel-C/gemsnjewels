@@ -27,20 +27,24 @@ export default function Footer(){
                         <p className='mb-3'>gemsandjewelsbenin@gmail.com</p>
                         <p className='mb-3'>+234 905 2742 664</p>
                         <div className='flex flex-row justufy-between items-center space-x-5'>
-                            <Image
-                                src="/watsapp.jpg"
-                                width={10}
-                                height={10}
-                                alt="Picture of the author"
-                                className="w-8 h-8 rounded-full"
-                            />
-                            <Image
-                                src="/instagram.jpg"
-                                width={10}
-                                height={10}
-                                alt="Picture of the author"
-                                className="w-8 h-8 rounded-full"
-                            />
+                            <a href='https://wa.me/message/66FMZ4LZOKQDF1'>
+                                <Image
+                                    src="/watsapp.jpg"
+                                    width={10}
+                                    height={10}
+                                    alt="Picture of the author"
+                                    className="w-8 h-8 rounded-full"
+                                />
+                            </a>
+                            <a href='https://instagram.com/gems_n_jewelries?igshid=NTc4MTIwNjQ2YQ=='>
+                                <Image
+                                    src="/instagram.jpg"
+                                    width={10}
+                                    height={10}
+                                    alt="Picture of the author"
+                                    className="w-8 h-8 rounded-full"
+                                />
+                            </a>
                         </div>
                     </div>
                     </div>
