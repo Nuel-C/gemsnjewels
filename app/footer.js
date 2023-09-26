@@ -27,7 +27,7 @@ export default function Footer(){
                         <p className='mb-3'>gemsandjewelsbenin@gmail.com</p>
                         <p className='mb-3'>+234 905 2742 664</p>
                         <div className='flex flex-row justufy-between items-center space-x-5'>
-                            <a href='https://wa.me/message/66FMZ4LZOKQDF1'>
+                            <a href='https://wa.me/message/66FMZ4LZOKQDF1' target='_blank'>
                                 <Image
                                     src="/watsapp.jpg"
                                     width={10}
@@ -36,7 +36,7 @@ export default function Footer(){
                                     className="w-8 h-8 rounded-full"
                                 />
                             </a>
-                            <a href='https://instagram.com/gems_n_jewelries?igshid=NTc4MTIwNjQ2YQ=='>
+                            <a href='https://instagram.com/gems_n_jewelries?igshid=NTc4MTIwNjQ2YQ==' target='_blank'>
                                 <Image
                                     src="/instagram.jpg"
                                     width={10}
