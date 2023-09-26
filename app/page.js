@@ -66,7 +66,7 @@ export default function Home() {
             if(res.data.success == true){
                 alert('Added '+name+' X '+number+' to cart')
                 axios
-                .get("/getAllUploads")
+                .get("/getRegularUploads")
                 .then((res) => {
                 const ff = res.data;
                 if(ff.length > 8){
@@ -126,7 +126,7 @@ export default function Home() {
                 className="w-full h-full"
             />
             <div id="first_image_div" className="flex flex-col justify-center space-y-5 items-center text-center">
-                <h1 className="font-bold md:text-6xl text-3xl text-white">Finest Jewelry Collection</h1>
+                <h1 className="font-bold md:text-6xl text-3xl text-white">Explore Jewelry Collection</h1>
                 <button className="text-white"><Link href='/products'>Explore Collection</Link> <i class="fa-solid fa-down-long"></i></button>
             </div>
         </div>
@@ -140,7 +140,7 @@ export default function Home() {
                     alt="Picture of the author"
                 />
                 <div id="first_image_div" className="flex flex-col justify-center space-y-5 items-center text-center">
-                    <h1 className="font-bold text-3xl text-white">Finest Jewelry Collection</h1>
+                    <h1 className="font-bold text-3xl text-white">Amazing Jewelry Collection</h1>
                 </div>
             </div>
             <div className="w-full h-full" id="first_image">

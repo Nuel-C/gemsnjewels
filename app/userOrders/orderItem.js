@@ -30,7 +30,7 @@ export const OrderItem = ({data})=> {
     
 
     return (
-        <div className="p-2 md:p-5 rounded-md bg-gray-200 text-gray-700 flex flex-row justify-between space-x-5 md:w-1/3">
+        <div className="p-2 md:p-5 rounded-md bg-gray-200 text-gray-700 flex flex-row justify-between space-x-5 md:w-1/3 w-full">
             <div className='w-1/2'>
                 <div className="p-1">
                     <p className="text-xs font-bold text-slate-500 mb-2" id='myText'>

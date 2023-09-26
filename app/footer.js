@@ -12,8 +12,8 @@ export default function Footer(){
                     <div className='flex md:flex-row flex-col justufy-around lg:items-center items-start justify-between md:space-x-16'>
                     <div className='flex flex-col justufy-between items-start text-black mb-10 relative lg:left-0 md:left-10'>
                         <p className='font-bold mb-3'>Location</p>
-                        <p className='mb-3'>Isale Eko Avenue, Dolphin Estate, Ikoyi, Lagos, <br /> Nigeria</p>
-                        <p>© 2022 Hernalytics</p>
+                        <p className='mb-3'>Benin City, Edo State<br /> Nigeria</p>
+                        <p>© 2022 Gems and Jewels</p>
                     </div>
                     <div className='flex flex-col justufy-between items-start text-black mb-10'>
                         <p className='font-bold mb-3'>Quick Links</p>
@@ -24,8 +24,8 @@ export default function Footer(){
                     </div>
                     <div className='flex flex-col justufy-between items-start text-black mb-10'>
                         <p className='font-bold mb-3'>Let's chat!</p>
-                        <p className='mb-3'>hernalytics@gmail.com</p>
-                        <p className='mb-3'>+234 801 234 5678</p>
+                        <p className='mb-3'>gemsandjewelsbenin@gmail.com</p>
+                        <p className='mb-3'>+234 905 2742 664</p>
                         <div className='flex flex-row justufy-between items-center space-x-5'>
                             <Image
                                 src="/watsapp.jpg"
