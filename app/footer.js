@@ -25,7 +25,7 @@ export default function Footer(){
                     <div className='flex flex-col justufy-between items-start text-black mb-10'>
                         <p className='font-bold mb-3'>Let's chat!</p>
                         <p className='mb-3'>gemsandjewelsbenin@gmail.com</p>
-                        <p className='mb-3'>+234 905 2742 664</p>
+                        <p className='mb-3'>+234 9052 741 664</p>
                         <div className='flex flex-row justufy-between items-center space-x-5'>
                             <a href='https://wa.me/message/66FMZ4LZOKQDF1' target='_blank'>
                                 <Image
